@@ -1,0 +1,94 @@
+createdAt: "2018-04-18T09:48:35.928Z"
+updatedAt: "2018-04-18T09:48:54.938Z"
+type: "MARKDOWN_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "Ressources for Thunderbird addon development"
+content: '''
+  # Ressources for Thunderbird addon development
+  
+  ## Mozilla pages
+    * https://developer.mozilla.org/en-US/Add-ons/Thunderbird
+    * https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Thunderbird_API_documentation
+    * Thunderbird classes which can be used by addons:
+      * https://dxr.mozilla.org/comm-central/source/mailnews/base/public
+    * Source code of Thunderbird components:
+      * https://dxr.mozilla.org/comm-central/source/mail/components
+      
+  
+  ## Collection of useful code snippets and guides
+  #### Common
+    * http://mdn.beonex.com/en/Extensions/Thunderbird/HowTos.html
+      * old HowTo: https://developer.mozilla.org/en-US/Add-ons/Thunderbird/HowTos
+    * https://github.com/protz/thunderbird-stdlib
+    * https://developer.mozilla.org/en-US/Add-ons/Thunderbird/Finding_the_code_for_a_feature
+    
+  #### get OS
+  Returns OS as string e.g. "WINNT".
+  
+  Complete list at https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/OS_TARGET
+  
+      function getOS() {
+        var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+        var xulRuntime = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
+        return xulRuntime.OS;
+      }
+  
+  #### Working with files
+  
+  https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/OSFile.jsm/OS.File_for_workers
+  
+  #### Adding a preferences menu
+  
+  https://developer.mozilla.org/en-US/docs/Adding_preferences_to_an_extension
+  
+  #### Accessing Attachments in compose window
+  
+  https://dxr.mozilla.org/comm-central/source/mail/components/compose/content/MsgComposeCommands.js#4620
+  
+  #### Install Addon without user interaction
+  
+    * https://gist.github.com/eddiejaoude/0076739fe610189581d0
+    * http://bernaerts.dyndns.org/linux/74-ubuntu/271-ubuntu-firefox-thunderbird-addon-commandline
+    
+  ## Online Books
+  
+    * https://de.scribd.com/document/4074097/RapidApplicationDevelopmentWithMozilla
+    
+  
+  
+  ## Guides
+    * Storage: SQLite & Memory-BLOB
+      * https://developer.mozilla.org/en-US/Add-ons/Thunderbird/HowTos/Common_Thunderbird_Extension_Techniques/Use_SQLite
+    * Calling native Libraries
+      * https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes
+      * Examples: https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/Examples
+      * Basic Example: https://mar10.noblogs.org/post/2014/10/02/loading-a-native-library-in-firefox-via-the-add-ons-sdk/
+      * Complex Example: https://mar10.noblogs.org/post/2014/10/13/js-ctypes-from-c-to-javascript-to-c/
+      * Returning a String: http://stackoverflow.com/questions/30738818/js-ctypes-third-part-dll-with-string-return
+      * Casting Examples: https://gist.github.com/Noitidart/081ef49002a90fe43005
+      
+  ## Simple Addons
+    * Close Tab with Escape key
+      * https://addons.mozilla.org/de/thunderbird/addon/close-tab-on-esc/
+      
+  ## Useful things
+    * Open a new Tab and load a page inside
+    * Call native binaries
+    * Find native binaries on multiple platforms
+    * Get configured accounts in thunderbird
+    * Get the chrome-path for a file path
+    
+  ## TODOs
+    * Monterail-Addon (Preferences Menu, Working with files and directories)
+    * Contact-DB (HTML in Tab, Adding custom Button to Menu bar, SQLite3 usage)
+    * RSS-Reader
+    * Import certificates
+    
+      
+'''
+tags: [
+  "tb"
+  "ressources"
+]
+isStarred: false
+isTrashed: false

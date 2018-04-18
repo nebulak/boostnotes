@@ -1,0 +1,81 @@
+createdAt: "2018-04-18T09:50:59.039Z"
+updatedAt: "2018-04-18T09:51:28.163Z"
+type: "MARKDOWN_NOTE"
+folder: "00f84f63205d821f8357"
+title: "My Atom setup"
+content: '''
+  
+  # My Atom setup
+  
+  ## Useful base packages
+  **[docblockr](https://atom.io/packages/docblockr)**: For easy creation of **DocBlocks** and **DocStrings**
+  
+      apm install docblockr
+  
+  **[minimap](https://atom.io/packages/minimap)**: Overview of current file with a **minimap**
+  
+      apm install minimap
+  
+  **[git-plus](https://atom.io/packages/git-plus)**: Shortcuts for git commands
+  
+      apm install git-plus
+      
+  **[merge-conflicts](https://atom.io/packages/merge-conflicts)**: Easily merge conflicts when working together.
+  
+      apm install merge-conflicts
+      
+  **[file-icons](https://atom.io/packages/file-icons)**: File icons for different file types
+      
+      apm install file-icons
+  
+  ## Python specific
+  
+  ### Python linter & autocompletion
+  #### PIP
+  
+      sudo pip install flake8
+      sudo pip install flake8-docstrings
+  
+  #### Atom packages
+      apm install linter-flake8
+      apm install linter-ui-default
+      apm install intentions
+      apm install busy-signal
+      apm install autocomplete-python
+      
+  Add the following line to your atom init script:
+  
+      process.env.PATH = ['/usr/local/bin/', process.env.PATH].join(':')
+      
+  
+  ## CSS specific
+  
+  **[Pigments](https://atom.io/packages/pigments)**: Shows colors in CSS files
+      
+      apm install pigments
+  
+  
+  ## Collaboration
+  
+  **[Teletype](https://atom.io/packages/teletype)**: Collaborative P2P typing
+  
+      apm install teletype
+  
+  **[Easy to use Atom Markdown setup](https://www.news47ell.com/how-to/atom-best-markdown-editor-mac/)
+  
+  
+  ## For backup
+  
+  **[config-import-export](https://atom.io/packages/config-import-export):** To backup your atom configuration
+  
+  ## //TODO:
+    * https://atom.io/packages/terminal-plus
+    * https://atom.io/packages/imdone-atom
+  
+'''
+tags: [
+  "devenv"
+  "atom"
+]
+isStarred: false
+isTrashed: false

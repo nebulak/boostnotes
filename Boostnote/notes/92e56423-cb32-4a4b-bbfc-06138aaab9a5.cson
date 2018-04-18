@@ -1,0 +1,52 @@
+createdAt: "2018-04-18T09:16:48.577Z"
+updatedAt: "2018-04-18T09:17:49.864Z"
+type: "MARKDOWN_NOTE"
+folder: "1f4ca2e02de793f62302"
+title: "Python Email Ressources"
+content: '''
+  # Python Email Ressources
+  ## IMAP-related
+    * Using UIDs: https://stackoverflow.com/questions/3775667/how-to-get-message-id-using-imaplib
+    * Delete Messages: https://stackoverflow.com/questions/3180891/imap-deleting-messages
+    * Autocomplete: https://stackoverflow.com/a/7821956/7486276
+    * Qt System Tray: https://stackoverflow.com/questions/893984/pyqt-show-menu-in-a-system-tray-application
+    * Parse HTML to Text: 
+      * https://stackoverflow.com/questions/17641490/how-to-parse-html-from-email-body-python
+      * https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+    * Parse Mime:
+      * https://stackoverflow.com/questions/17874360/python-how-to-parse-the-body-from-a-raw-email-given-that-raw-email-does-not
+      * (http://www.magiksys.net/pyzmail/)
+    * Parse Email-adresses: TODO...
+  
+  ### Autodiscover Mailserver
+  
+    * https://serverfault.com/questions/814715/is-there-a-standard-dns-record-to-indicate-the-imap-server-for-a-domain
+    * https://github.com/rthalley/dnspython
+    * https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration
+    * check for imap.example.com/smtp.example.com
+  
+  ### OpenPGP integration
+  
+    * https://www.saltycrane.com/blog/2011/10/python-gnupg-gpg-example/
+  
+  ### Autocrypt integration
+    * https://py-autocrypt.readthedocs.io/en/latest/api.html#
+  
+  ### IMAPLib Tutorials
+    
+    * https://yuji.wordpress.com/2011/06/22/python-imaplib-imap-example-with-gmail/
+    
+  ## SMTP related
+  
+    * https://docs.python.org/3/library/smtplib.html
+    * http://naelshiab.com/tutorial-send-email-python/
+'''
+tags: [
+  "tutorial"
+  "python"
+  "email"
+  "imap"
+  "ressources"
+]
+isStarred: false
+isTrashed: false

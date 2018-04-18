@@ -1,0 +1,72 @@
+createdAt: "2018-04-18T09:46:39.776Z"
+updatedAt: "2018-04-18T09:47:20.555Z"
+type: "MARKDOWN_NOTE"
+folder: "6bff58b74433e038c223"
+title: "Mono Decentralization Ressources"
+content: '''
+  # Mono Decentralization Ressources
+  
+  # Anonymity - tor
+  
+    * DotNetTor: https://github.com/nopara73/DotNetTor
+    * https://github.com/postworthy/SocksWebProxy
+    * https://github.com/joelverhagen/TorSharp
+  
+  # Decentralization
+  ## IPFS:
+  
+    * https://github.com/richardschneider/net-ipfs-api
+      
+  ## Torrent
+  
+  ### Libraries
+  
+    * https://github.com/Eskat0n/OctoTorrent
+    * https://github.com/mono/monotorrent
+  
+  ### BEncoding
+  
+    * https://github.com/Krusen/BencodeNET
+    
+  ## Crypto
+  
+  ### Libraries
+  
+    * https://github.com/CodesInChaos/Chaos.NaCl
+    * https://github.com/langboost/libaxolotl-uwp
+  
+  
+  #### Keepass Access
+    * https://github.com/leorzz/psKeepPass
+    * http://it-by-doing.blogspot.de/2014/10/accessing-keepass-with-powershell.html
+  
+  #### SQLCipher
+    * https://github.com/ericsink/SQLitePCL.raw/wiki/How-to-use-SQLCipher-with-SQLite-net
+    * **Usage:** https://github.com/ericsink/SQLitePCL.raw/issues/147
+      * https://github.com/praeclarum/sqlite-net
+      * https://github.com/ericsink/SQLitePCL.raw
+  
+  ### Examples
+  
+    * https://github.com/sledwith/PGP-Decryption-With-C-Sharp
+    * https://github.com/langboost/axolotl-sample-client
+  
+  
+  ## Decentralized Networks/Applications
+  
+    * https://github.com/HelloZeroNet/ZeroNet
+    * https://github.com/blockstack/blockstack
+    * IPFS
+    
+  # Attack vectors and protection
+    * IPFS replay attack
+      * https://github.com/ipfs/faq/issues/70
+      * https://github.com/ipfs/faq/issues/70#issuecomment-153801133
+'''
+tags: [
+  "mono"
+  "decentralization"
+  "ressources"
+]
+isStarred: false
+isTrashed: false

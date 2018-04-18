@@ -1,0 +1,28 @@
+createdAt: "2018-04-18T09:10:51.154Z"
+updatedAt: "2018-04-18T09:12:49.613Z"
+type: "MARKDOWN_NOTE"
+folder: "011825cbb91c6d9c89ea"
+title: "OpenLDAP TLS configuration with self-signed certificate"
+content: '''
+  # OpenLDAP TLS configuration with self-signed certificate
+  
+    * https://www.server-world.info/en/note?os=Debian_8&p=ssl
+    * https://www.server-world.info/en/note?os=Debian_8&p=openldap&f=4
+    * https://dokuwiki.nausch.org/doku.php/centos:ldap:install
+    * https://dokuwiki.nausch.org/doku.php/centos:ldap:ldaps
+    * https://www.digitalocean.com/community/tutorials/how-to-encrypt-openldap-connections-using-starttls
+    
+  Client setup:
+  
+    * https://serverfault.com/questions/653321/unable-to-connect-to-server-via-ldaps
+    * https://debianforum.de/forum/viewtopic.php?t=151443
+'''
+tags: [
+  "openldap"
+  "tls"
+  "infrastructure"
+  "sysadmin"
+  "tutorial"
+]
+isStarred: false
+isTrashed: false

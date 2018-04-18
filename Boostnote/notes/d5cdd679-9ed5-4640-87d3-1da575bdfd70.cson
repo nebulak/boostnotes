@@ -1,0 +1,19 @@
+createdAt: "2018-04-18T09:21:49.343Z"
+updatedAt: "2018-04-18T09:22:32.719Z"
+type: "MARKDOWN_NOTE"
+folder: "eaf2f7e1fc238535cd80"
+title: "GnuPG Ressources"
+content: '''
+  # GnuPG Ressources
+  
+  Links for parsing gnupg output:
+  
+    * https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=blob_plain;f=doc/DETAILS
+'''
+tags: [
+  "gpg"
+  "OpenPGP"
+  "Specification"
+]
+isStarred: false
+isTrashed: false

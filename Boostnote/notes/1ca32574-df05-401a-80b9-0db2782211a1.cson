@@ -1,0 +1,76 @@
+createdAt: "2018-04-18T09:26:59.759Z"
+updatedAt: "2018-04-18T09:28:42.606Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "Open Tab in TB & add background script and own html"
+description: "Open Tab in TB & add background script and own html "
+snippets: [
+  {
+    name: "overlay.js"
+    mode: "JavaScript"
+    content: '''
+      var MWTool = {
+      		clickHandlerRegEx: new RegExp("^chrome://addon/content/"),
+      		openTab: function(chromePath) {
+      			Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("mail:3pane").document.getElementById("tabmail").openTab("chromeTab", {chromePage: chromePath, clickHandler: "specialTabs.siteClickHandler(event, MWTool.clickHandlerRegEx);"});
+      		}
+      };
+      
+      var addon = (function () {
+      
+      	var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+      	var Application = Cc["@mozilla.org/steel/application;1"].getService(Ci.steelIApplication);
+      
+      	Cu.import('resource://gre/modules/Services.jsm');
+      	Cu.import("resource://gre/modules/NetUtil.jsm");
+      	Cu.import("resource://gre/modules/ctypes.jsm");
+      
+      	window.addEventListener("load", function () {
+      		//TODO: next line necessary?
+      		window.MWTool = MWTool;
+      		document.getElementById("btn-addon").onclick = function () {
+      			MWTool.openTab("chrome://addon/content/index.html");
+      		};
+      		console.log("added event listener");
+      	});
+      	//window.addEventListener("unload", unload);
+      	Application.console.log('Finished setup!');
+      
+      } ());
+    '''
+  }
+  {
+    name: "overlay.xul"
+    mode: "XML"
+    content: '''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE overlay >
+      <overlay id = "mainwindow-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+      	<stringbundleset id="stringbundleset">
+      		<stringbundle id="stringBundle" src="chrome://addon/locale/addon.properties"/>
+      	</stringbundleset>
+      	<commandset id="messengerCommands">
+      		<commandset id="addon-messengerCmds" oncommandupdate="addon.update()">
+      			<command id="addon-onButtonClick" oncommand="addon.onButtonCommand()"/>
+      		</commandset>
+      	</commandset>
+      	<toolbar id="mail-bar3">
+      		<toolbarbutton id="btn-addon"
+      			image="chrome://addon/skin/btn-icon.png"
+      			command="onButtonClick" />
+      		<toolbarspacer id="addon-spacer" width="40"/>
+          <!-- this creates an hidden iframe for background jobs at startup -->
+      		<iframe type="chrome" src="chrome://addon/content/ui/background.html" id="background-iframe" width="0" height="0" style="width:0;height:0;border: 0;border: none; visibility: hidden; display: none;"/>
+      	</toolbar>
+      
+      	<script type="application/x-javascript" src="chrome://addon/content/js/overlay.js"/>
+      </overlay>
+    '''
+  }
+]
+tags: [
+  "TB"
+  "Tab"
+]
+isStarred: false
+isTrashed: false

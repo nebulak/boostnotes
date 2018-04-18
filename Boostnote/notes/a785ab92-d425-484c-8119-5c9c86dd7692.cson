@@ -1,0 +1,29 @@
+createdAt: "2018-04-18T09:56:40.693Z"
+updatedAt: "2018-04-18T09:57:08.958Z"
+type: "MARKDOWN_NOTE"
+folder: "ea00197dbcec7d72472d"
+title: "OpenSSL C Snippets"
+content: '''
+  # OpenSSL C Snippets
+  
+  
+  
+  # Save X509 certificate
+  ## as DER
+  
+      int i2d_X509_fp(FILE *fp, X509 *x);
+  
+  ## as PEM
+  
+  https://stackoverflow.com/a/6088446/7486276
+  
+  ## Reference
+  https://www.openssl.org/docs/manmaster/man3/d2i_X509.html
+  
+'''
+tags: [
+  "c"
+  "openssl"
+]
+isStarred: false
+isTrashed: false

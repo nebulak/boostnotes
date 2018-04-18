@@ -1,0 +1,111 @@
+createdAt: "2018-04-18T09:30:28.743Z"
+updatedAt: "2018-04-18T09:43:57.974Z"
+type: "MARKDOWN_NOTE"
+folder: "793521cf8d1bf04392e6"
+title: "Create DIY Manjaro ISO"
+content: '''
+  # Create DIY Manjaro ISO
+  
+  ## System setup
+  
+      sudo pacman -Syu manjaro-tools
+      
+  Install packages 1-6. 
+  
+  ## Modifying a manjaro ISO
+  ### Change wallpaper
+  
+  Open
+  
+      /home/<username>/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml
+  and change all paths to your custom wallpaper.
+  Example:
+  
+      <?xml version="1.0" encoding="UTF-8"?>
+       <channel name="xfce4-desktop" version="1.0">
+         <property name="backdrop" type="empty">
+           <property name="screen0" type="empty">
+             <property name="monitor0" type="empty">
+               <property name="image-path" type="string" value="\'''/usr/share/backgrounds/<YOUR IMAGE HERE>\'''"/>
+               <property name="last-image" type="string" value="\'''/usr/share/backgrounds/<YOUR IMAGE HERE>\'''"/>
+               <property name="last-single-image" type="string" value="\'''/usr/share/backgrounds/<YOUR IMAGE HERE>\'''"/>
+               <property name="image-style" type="int" value="5"/>
+             </property>
+             <property name="monitorVGA-0" type="empty">
+               <property name="workspace0" type="empty">
+                 <property name="color-style" type="int" value="0"/>
+                 <property name="image-style" type="int" value="5"/>
+                 <property name="last-image" type="string" value="\'''/usr/share/backgrounds/<YOUR IMAGE HERE>\'''"/>
+               </property>
+               <property name="workspace1" type="empty">
+                 <property name="color-style" type="int" value="0"/>
+                 <property name="image-style" type="int" value="5"/>
+                 <property name="last-image" type="string" value="\'''/usr/share/backgrounds/<YOUR IMAGE HERE>\'''"/>
+               </property>
+             </property>
+           </property>
+         </property>
+         <property name="desktop-icons" type="empty">
+           <property name="style" type="int" value="2"/>
+           <property name="file-icons" type="empty">
+             <property name="show-removable" type="bool" value="true"/>
+           </property>
+           <property name="icon-size" type="uint" value="32"/>
+         </property>
+       </channel>
+   
+  Create the directories for the following path:
+  
+      /usr/share/manjaro-tools/iso-profiles/manjaro/xfce/desktop-overlay/usr/share/backgrounds/
+  
+  **Copy your wallpaper to this directory**
+  
+  Create the following directory:
+  
+      /usr/share/manjaro-tools/iso-profiles/manjaro/xfce/desktop-overlay/etc/skel/.config
+      
+  Copy the directory:
+  
+      /home/<username>/.config/xfce4
+  to
+  
+      /usr/share/manjaro-tools/iso-profiles/manjaro/xfce/desktop-overlay/etc/skel/.config/xfce4
+      
+  
+  ### Adding and removing Manjaro packages
+  
+  Add your packages to the following file or remove packages you do not want to be installes:
+  
+      /usr/share/manjaro-tools/iso-profiles/manjaro/xfce/Packages-Desktop
+      
+  **Search for package:**
+    * Arch/Manjaro packages: https://www.archlinux.org/packages/
+    * AUR packages: https://aur.archlinux.org/packages/
+      * For AUR packages you need to add the repo to user-repos.conf
+      
+  ### Adding AUR packages
+  Create user-repos.conf at:
+  
+      /usr/share/manjaro-tools/iso-profiles/manjaro/xfce/user-repos.conf
+  
+  ### Creating own repository
+  
+    * Manual Repo build:
+      * https://wiki.manjaro.org/index.php?title=Buildiso_with_AUR_packages:_Using_buildpkg
+    * Repo Manager
+      * https://gist.github.com/nebulak/fcb9c53bb3f857a5710d7b2c01ea9fae
+  
+  #### Additional ressources:
+  
+    * https://forum.manjaro.org/t/how-to-create-your-own-manjaro-spin-with-manjaro-tools/1355
+    * https://wiki.manjaro.org/index.php?title=Build_Manjaro_ISOs_with_buildiso
+    * How to setup own package repo:
+      * https://github.com/EnigmaCurry/arch-ppa
+  
+'''
+tags: [
+  "arcticalinux"
+  "osdev"
+]
+isStarred: false
+isTrashed: false

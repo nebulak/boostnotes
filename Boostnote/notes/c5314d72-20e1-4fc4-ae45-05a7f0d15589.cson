@@ -1,0 +1,22 @@
+createdAt: "2018-04-18T09:03:34.445Z"
+updatedAt: "2018-04-18T09:05:56.070Z"
+type: "MARKDOWN_NOTE"
+folder: "8bcb4aebf09dbf33139f"
+title: "Awesome Docker Containers"
+content: '''
+  # Awesome Docker Containers 
+  
+  # VoIP: Kamailio
+    * https://dopensource.com/2016/05/11/running-kamailio-in-a-docker-container/
+  
+  # Mailserver
+  
+    * [crankdevde / docker_mailserver — Bitbucket](https://bitbucket.org/crankdevde/docker_mailserver)
+'''
+tags: [
+  "docker"
+  "voip"
+  "kamailio"
+]
+isStarred: false
+isTrashed: false

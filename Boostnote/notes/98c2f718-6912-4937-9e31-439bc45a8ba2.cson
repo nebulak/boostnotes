@@ -1,0 +1,18 @@
+createdAt: "2018-04-18T09:06:22.987Z"
+updatedAt: "2018-04-18T09:07:59.533Z"
+type: "MARKDOWN_NOTE"
+folder: "8bcb4aebf09dbf33139f"
+title: "Docker Ressources"
+content: '''
+  # Docker Ressources
+  
+  [MySQL Docker Containers: Understanding the basics | Severalnines](https://severalnines.com/blog/mysql-docker-containers-understanding-basics)
+  
+  [Baking Your Docker Images With Ansible - Maestrano Blog](https://blog.maestrano.com/baking-your-docker-images-with-ansible/)
+'''
+tags: [
+  "docker"
+  "tutorial"
+]
+isStarred: false
+isTrashed: false

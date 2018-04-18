@@ -1,0 +1,64 @@
+createdAt: "2018-04-18T09:00:13.190Z"
+updatedAt: "2018-04-18T09:01:14.317Z"
+type: "MARKDOWN_NOTE"
+folder: "eaf2f7e1fc238535cd80"
+title: "WebKeyDirectory"
+content: '''
+  # WebKeyDirectory
+  
+  **Specification:** https://tools.ietf.org/html/draft-koch-openpgp-webkey-service-05
+  
+  # Routes
+  
+  ## /.well-known/openpgpkey/submission-address
+  **Returns:** Submission email address
+  
+  **Example:**
+  
+      key-submission-example.org@directory.example.org
+  
+  ## /.well-known/openpgpkey/policy
+  
+  
+  # WKD-Bot
+  ## On received email
+  ### Check if submission with key
+    * check if the key was already sent
+    * check if the email-address of the key matches the server
+    * check if sender's email-address matches the email-address of the key
+    * Create encrypted email with the following contents:
+      * nonce
+      * key fingerprint
+    * send email
+    * save submission info in database
+  
+  ### Check if submission confirmation
+    * if email is encrypt: decrypt
+    * check if nonce matches pending confirmation in database
+    * check if email-address matches confirmation email-address in database
+    * for ASCII-characters in local-part of address: tolower()
+    * Create SHA1-hash of local part of address
+    *  Z-Base-32-encode SHA1-hash
+    * publish key to hu-directory
+  
+  ## Configuration values
+    * web-dir-path
+    * submission-email-address
+    * policy
+    * registration-type(s)
+    * working-dir (for gnupg-keyring and temporary keyrings)
+    * database configuration
+    * check-interval
+  
+    
+  
+'''
+tags: [
+  "WKD"
+  "OpenPGP"
+  "Specification"
+  "server"
+  "infrastructure"
+]
+isStarred: false
+isTrashed: false

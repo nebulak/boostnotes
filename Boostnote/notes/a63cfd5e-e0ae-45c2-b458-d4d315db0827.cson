@@ -1,0 +1,32 @@
+createdAt: "2018-04-18T09:08:31.747Z"
+updatedAt: "2018-04-18T09:09:12.652Z"
+type: "MARKDOWN_NOTE"
+folder: "1f4ca2e02de793f62302"
+title: "Python GTK"
+content: '''
+  # Python GTK
+  
+  # General Development
+  
+    * https://python-gtk-3-tutorial.readthedocs.io/en/latest/
+    * https://glade.gnome.org/
+    * https://wiki.gnome.org/action/show/Apps/Glade/Tutorials
+  
+  # Using custom theme
+  
+    * https://stackoverflow.com/a/43425471/7486276
+  
+  
+  # Themes
+  
+    * https://github.com/nana-4/materia-theme
+    
+  
+'''
+tags: [
+  "python"
+  "gtk"
+  "gui"
+]
+isStarred: false
+isTrashed: false

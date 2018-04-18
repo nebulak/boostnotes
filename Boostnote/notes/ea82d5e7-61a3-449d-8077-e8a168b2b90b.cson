@@ -1,0 +1,23 @@
+createdAt: "2018-04-18T09:23:51.359Z"
+updatedAt: "2018-04-18T09:24:42.600Z"
+type: "MARKDOWN_NOTE"
+folder: "011825cbb91c6d9c89ea"
+title: "OpenSSL snippets"
+content: '''
+  # OpenSSL snippets
+  
+  ## Create self-signed certificate
+  
+      openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -subj "/C=US/ST=Oregon/L=Portland/O=Company Name/OU=Org/CN=www.example.com"
+      
+  ## Convert certificate to der
+  
+      openssl x509 -outform der -in certificate.pem -out certificate.der
+'''
+tags: [
+  "sysadmin"
+  "openssl"
+  "cert"
+]
+isStarred: false
+isTrashed: false

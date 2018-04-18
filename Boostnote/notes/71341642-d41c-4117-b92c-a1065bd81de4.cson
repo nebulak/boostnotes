@@ -1,0 +1,19 @@
+createdAt: "2018-04-18T09:36:58.739Z"
+updatedAt: "2018-04-18T09:37:42.754Z"
+type: "MARKDOWN_NOTE"
+folder: "6bff58b74433e038c223"
+title: "Cross platform snippets"
+content: '''
+  # Cross platform snippets
+  
+  **Detecting OS:** http://mono.wikia.com/wiki/Detecting_the_execution_platform
+  
+  **Get Environment Variables:** https://stackoverflow.com/questions/867485/c-sharp-getting-the-path-of-appdata
+'''
+tags: [
+  "mono"
+  "ressources"
+  "crossplatform"
+]
+isStarred: false
+isTrashed: false

@@ -1,0 +1,60 @@
+{
+  "folders": [
+    {
+      "key": "5e3baaa059a9f36e75c4",
+      "color": "#1278BD",
+      "name": "Default"
+    },
+    {
+      "key": "ce1d232699b99dfbebfb",
+      "color": "#E10051",
+      "name": "TB-Addon"
+    },
+    {
+      "key": "eaf2f7e1fc238535cd80",
+      "color": "#E8D252",
+      "name": "OpenPGP"
+    },
+    {
+      "key": "8bcb4aebf09dbf33139f",
+      "color": "#3FD941",
+      "name": "Docker"
+    },
+    {
+      "key": "1f4ca2e02de793f62302",
+      "color": "#E10051",
+      "name": "Python"
+    },
+    {
+      "key": "011825cbb91c6d9c89ea",
+      "color": "#3FD941",
+      "name": "SysAdmin"
+    },
+    {
+      "key": "aa4000d029eb34deae54",
+      "color": "#E8D252",
+      "name": "Jekyll"
+    },
+    {
+      "key": "793521cf8d1bf04392e6",
+      "color": "#2BA5F7",
+      "name": "ArcticaLinux"
+    },
+    {
+      "key": "6bff58b74433e038c223",
+      "color": "#3FD941",
+      "name": "Mono C#"
+    },
+    {
+      "key": "ea00197dbcec7d72472d",
+      "color": "#3FD941",
+      "name": "C"
+    },
+    {
+      "key": "00f84f63205d821f8357",
+      "color": "#E8D252",
+      "name": "DevEnv"
+    }
+  ],
+  "version": "1.0"
+}

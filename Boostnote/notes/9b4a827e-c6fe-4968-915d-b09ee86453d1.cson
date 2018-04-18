@@ -1,0 +1,30 @@
+createdAt: "2018-04-18T09:44:50.898Z"
+updatedAt: "2018-04-18T09:45:39.692Z"
+type: "MARKDOWN_NOTE"
+folder: "6bff58b74433e038c223"
+title: "XMPP ressources"
+content: '''
+  # XMPP ressources
+  
+  
+  # AgsXMPP
+    * Extension development
+      * https://forum.ag-software.net/thread/187-How-to-Create-Custom-packets
+    * PubSub
+      * https://forum.ag-software.net/thread/633-Help-with-PubSub-and-agsXmpp
+    * Writing extensions
+      * https://forum.ag-software.net/thread/187-How-to-Create-Custom-packets;?unb528sess=85e566a89258e1f8960060053a1fa055
+      
+  # OMEMO
+  
+  https://xmpp.org/extensions/inbox/omemo.html#usecases-setup
+'''
+tags: [
+  "xmpp"
+  "mono"
+  "omemo"
+  "crypto"
+  "agsxmpp"
+]
+isStarred: false
+isTrashed: false

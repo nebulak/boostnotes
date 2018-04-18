@@ -1,0 +1,25 @@
+createdAt: "2018-04-18T09:13:07.314Z"
+updatedAt: "2018-04-18T09:13:27.460Z"
+type: "MARKDOWN_NOTE"
+folder: "aa4000d029eb34deae54"
+title: "Theme"
+content: '''
+  # Theme
+  https://github.com/jekyll/minima
+  
+  
+  # Adding categories to a theme
+  
+  https://blog.webjeda.com/jekyll-categories/
+  
+  # Syntax highlighting
+  
+  https://github.com/jwarby/jekyll-pygments-themes
+'''
+tags: [
+  "tutorial"
+  "jekyll"
+  "web"
+]
+isStarred: false
+isTrashed: false

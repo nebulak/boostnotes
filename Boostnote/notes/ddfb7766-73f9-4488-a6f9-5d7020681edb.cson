@@ -1,0 +1,19 @@
+createdAt: "2018-04-18T07:38:03.262Z"
+updatedAt: "2018-04-18T07:38:41.557Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "import Cert to TB"
+description: "import Cert to TB"
+snippets: [
+  {
+    name: ""
+    mode: "text"
+    content: ""
+  }
+]
+tags: [
+  "TB"
+  "JS"
+]
+isStarred: false
+isTrashed: false
