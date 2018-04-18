@@ -1,5 +1,5 @@
 createdAt: "2018-04-18T09:56:40.693Z"
-updatedAt: "2018-04-18T09:57:08.958Z"
+updatedAt: "2018-04-18T10:24:11.830Z"
 type: "MARKDOWN_NOTE"
 folder: "ea00197dbcec7d72472d"
 title: "OpenSSL C Snippets"
@@ -24,6 +24,7 @@ content: '''
 tags: [
   "c"
   "openssl"
+  "crypto"
 ]
 isStarred: false
 isTrashed: false

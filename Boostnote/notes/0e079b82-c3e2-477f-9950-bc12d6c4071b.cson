@@ -1,0 +1,35 @@
+createdAt: "2018-04-18T10:25:24.999Z"
+updatedAt: "2018-04-18T10:27:43.747Z"
+type: "MARKDOWN_NOTE"
+folder: "011825cbb91c6d9c89ea"
+title: "OpenSSL Self-Signed S/MIME Certs with OpenSSL"
+content: '''
+  # OpenSSL Self-Signed S/MIME Certs with OpenSSL 
+  
+  **source:** [Issue Your Own Self-Signed S/MIME Certs with OpenSSL · GitHub](https://gist.github.com/richieforeman/3166387)
+  
+  ### makeauthority.sh
+  
+      # Run this once
+      openssl genrsa -des3 -out ca.key 4096
+      openssl req -new -x509 -days 365 -key ca.key -out ca.crt
+  
+  ### makecert.sh
+  
+      # Run this for each email account.  The system must install the CA cert and the resulting p12 file in order to be happy.
+  
+      # Borrowed from http://serverfault.com/questions/103263/can-i-create-my-own-s-mime-certificate-for-email-encryption
+  
+      openssl genrsa -des3 -out smime.key 4096
+      openssl req -new -key smime.key -out smime.csr
+      openssl x509 -req -days 365 -in smime.csr -CA ca.crt -CAkey ca.key -set_serial 1 -out smime.crt -setalias "Self Signed SMIME" -addtrust emailProtection -addreject clientAuth -addreject serverAuth -trustout
+      openssl pkcs12 -export -in smime.crt -inkey smime.key -out smime.p12
+'''
+tags: [
+  "openssl"
+  "sysadmin"
+  "smime"
+  "ca"
+]
+isStarred: false
+isTrashed: false
