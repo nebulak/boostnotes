@@ -54,6 +54,11 @@
       "key": "00f84f63205d821f8357",
       "color": "#E8D252",
       "name": "DevEnv"
+    },
+    {
+      "key": "f4e6e478736ca64358d4",
+      "color": "#FF8E00",
+      "name": "git"
     }
   ],
   "version": "1.0"

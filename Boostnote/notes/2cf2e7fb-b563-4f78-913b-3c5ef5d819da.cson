@@ -1,0 +1,17 @@
+createdAt: "2018-04-18T10:38:26.731Z"
+updatedAt: "2018-04-18T10:38:49.668Z"
+type: "MARKDOWN_NOTE"
+folder: "f4e6e478736ca64358d4"
+title: "Useful git links"
+content: '''
+  # Useful git links
+  
+  ## snippets
+  
+  [Changing author info - User Documentation](https://help.github.com/articles/changing-author-info/)
+'''
+tags: [
+  "git"
+]
+isStarred: false
+isTrashed: false
