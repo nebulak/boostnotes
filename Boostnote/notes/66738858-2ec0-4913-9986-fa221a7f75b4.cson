@@ -1,0 +1,29 @@
+createdAt: "2018-04-23T07:16:39.058Z"
+updatedAt: "2018-04-23T07:19:07.609Z"
+type: "MARKDOWN_NOTE"
+folder: "011825cbb91c6d9c89ea"
+title: "Server Hardening Links"
+content: '''
+  # Server Hardening Links
+  
+  ## First 5 minutes scripts
+  
+  [Ansible Galaxy | geerlingguy.security](https://galaxy.ansible.com/geerlingguy/security/)
+  
+  
+  
+  ## Hardening
+  [Hardening Framework](http://dev-sec.io/)
+  
+  ## Server Security Testing
+  
+  [InSpec - Audit and Automated Testing Framework](https://www.inspec.io/)
+'''
+tags: [
+  "sysadmin"
+  "devops"
+  "infrastructure"
+  "tutorial"
+]
+isStarred: false
+isTrashed: false

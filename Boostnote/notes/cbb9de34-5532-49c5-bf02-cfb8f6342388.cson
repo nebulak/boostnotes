@@ -1,0 +1,94 @@
+createdAt: "2018-04-20T09:27:43.949Z"
+updatedAt: "2018-04-20T09:29:32.710Z"
+type: "MARKDOWN_NOTE"
+folder: "eaf2f7e1fc238535cd80"
+title: "Manual WKD setup"
+content: '''
+  # Manual WKD setup
+  
+  source: [Setting up WKD for self-hosted automatic key discovery · GitHub](https://gist.github.com/kafene/0a6e259996862d35845784e6e5dbfc79)
+  
+  I just got this working so I figured I'd share what I found, since there's hardly any information about this anywhere online except an RFC, the GPG mailing list and [one tutorial from the GnuPG blog](https://gnupg.org/blog/20161027-hosting-a-web-key-directory.html).
+  
+  You can use automatic key discovery with WKD (Web key directory) to make it easy for users to import your key, in GPG since version 2.1.12. Since this feature is fairly new, it isn't yet available in the current LTS release of Ubuntu (16.04; xenial), however it is available in Debian stable (stretch).
+  
+  I couldn't add a DNS CERT or DANE / OPENPGPKEY record through my email service (which also hosts my nameservers). I tried making the PKA record - a `foo._pka.example.com` TXT record but GPG doesn't seem to recognize it and fails; I'm still investigating why.
+  
+  So the last option for self-hosted auto-discovery was WKD.
+  
+  First thing I had to do was add an email address to my key. My primary UID is just my name so the key represents my identity rather than any particular email address. This was easy enough:
+  
+      $ gpg --edit-key 0xDEADBEEFCAFEBABE
+      gpg> adduid
+      # follow the prompts
+      gpg> save
+  
+  I used this to configure a sub-identity using my domain name as the "real name" and an email address (`foo@example.com`). I suppose most here will already have an email address associated with their uid, or else be familiar with the process of editing keys.
+  
+  Then I created a directory on my server:
+  
+      $ ssh example.com
+      > mkdir -p /var/www/.well-known/openpgpkey/hu
+  
+  The file you'll put inside this directory needs to be named the same as the WKD hash for your key, to get that run:
+  
+      gpg --with-wkd-hash --fingerprint foo@example.com
+  
+  Below each `uid` line with an email address, you should see 32 random looking characters @yourdomain.tld, for example:
+  
+      pub   2048R/0xDEADBEEFCAFEBABE 2015-01-25 [C] [expires: 2020-01-25]
+            Key fingerprint = ....
+      uid                   [ultimate] Your Name <foo@example.com>
+                            sc8wrug2g3mz8m8jz4tjrlgweilkgcba@example.com
+  
+  So the WKD hash in this example is `sc8wrug2g3mz8m8jz4tjrlgweilkgcba`.
+  Let's create the file that we'll be uploading:
+  
+      gpg --no-armor --export foo@example.com > sc8wrug2g3mz8m8jz4tjrlgweilkgcba
+  
+  Copy that file into `.well-known/openpgpkey/hu` directory on your web server.
+  If you have SSH access to your server configured you can use `scp`:
+  
+      scp ./sc8wrug2g3mz8m8jz4tjrlgweilkgcba example.com:/var/www/.well-known/openpgpkey/hu/
+  
+  I found that you do not need to enable directory listings for this well-known directory. To specify the [correct content type](https://tools.ietf.org/html/draft-koch-openpgp-webkey-service-00#section-3.1) with Apache, you can create a .htaccess file inside the `.well-known/openpgpkey/hu` directory with the following content:
+  
+      <IfModule mod_mime.c>
+          ForceType application/pgp-key
+      </IfModule>
+  
+  That will force all files within the directory to be served as `application/pgp-key`.
+  
+  That's all you need to do.
+  
+  You can test that it's working correctly:
+  
+      gpg --no-default-keyring --keyring /tmp/gpg-$$ --auto-key-locate clear,wkd --locate-keys foo@example.com
+  
+  Example output:
+  
+      gpg: key DEADBEEFCAFEBABE: public key "Your Name" imported
+      gpg: Total number processed: 1
+      gpg:               imported: 1
+      gpg: automatically retrieved 'foo@example.com' via WKD
+      ...
+  
+  You can instruct users who wish to import your key to run the command:
+  
+      gpg --auto-key-locate clear,wkd --locate-keys foo@example.com
+  
+  Or, to configure GPG to locate keys using wkd by placing this line in their `gpg.conf`:
+  
+      auto-key-locate keyserver,dane,cert,pka,wkd,ldap,hkp://keys.gnupg.net
+  
+  Note - that's just an example, only the `wkd` option is relevant for this, but the other options are handy too.
+  
+'''
+tags: [
+  "gpg"
+  "OpenPGP"
+  "WKD"
+  "tutorial"
+]
+isStarred: false
+isTrashed: false

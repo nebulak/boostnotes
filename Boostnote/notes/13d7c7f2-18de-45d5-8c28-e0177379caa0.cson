@@ -1,0 +1,58 @@
+createdAt: "2018-04-23T07:19:38.320Z"
+updatedAt: "2018-04-23T07:23:43.769Z"
+type: "MARKDOWN_NOTE"
+folder: "793521cf8d1bf04392e6"
+title: "Essential Packages"
+content: '''
+  # Essential Packages
+  
+  ## Password Management
+  
+  **KeePassXC:**
+    * Password management
+    * Firefox-Integration
+    * SSH-Key-Integration
+  
+  ## Instant Messaging
+  
+    * Gajim
+    * Gajim-OMEMO
+    * Gajim-HTTPUpload
+  
+  ## Email
+  
+    * Thunderbird
+    * Enigmail
+    * TorBirdy
+  
+  ## Anonymization
+  
+    * Tor
+    * Tor-Browser
+  
+  ## Directory encryption
+  
+    * gocryptfs
+    * sshfs
+  
+  ## Container encryption
+  
+    * VeraCrypt
+  
+  ## Skype alternative
+  
+    * tox
+  
+  
+  ## FDE
+  
+  //TODO:
+  
+  
+'''
+tags: [
+  "arcticalinux"
+  "osdev"
+]
+isStarred: false
+isTrashed: false
