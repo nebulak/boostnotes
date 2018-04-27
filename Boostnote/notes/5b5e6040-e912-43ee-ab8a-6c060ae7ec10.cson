@@ -1,0 +1,26 @@
+createdAt: "2018-04-27T08:27:01.915Z"
+updatedAt: "2018-04-27T09:18:14.985Z"
+type: "MARKDOWN_NOTE"
+folder: "011825cbb91c6d9c89ea"
+title: "Bash snippets"
+content: '''
+  # Bash snippets
+  
+  **Search string in files:**
+  
+      grep -r "string to be searched"  /path/to/dir
+  
+  
+  **Replace string in file:**
+  
+      sed 's/oldstring.*/newstring/' /some/file/some/where.txt
+  
+  
+  
+'''
+tags: [
+  "sysadmin"
+  "bash"
+]
+isStarred: false
+isTrashed: false
