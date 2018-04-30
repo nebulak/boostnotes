@@ -1,0 +1,38 @@
+createdAt: "2018-04-30T07:23:20.100Z"
+updatedAt: "2018-04-30T07:34:03.945Z"
+type: "MARKDOWN_NOTE"
+folder: "011825cbb91c6d9c89ea"
+title: "GNU sed to Create, Edit & manipulate files"
+content: '''
+  # GNU sed to Create, Edit & manipulate files
+  
+  LFCS-Part 1
+  [LFCS: How to use GNU 'sed' Command to Create, Edit, and Manipulate files in Linux - Part 1](https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/)
+  
+  ## Operators:
+  
+  **Redirection operator:**
+  Output of command is redirected to file instead of stdout on terminal.
+  
+      command > file
+  
+  
+  **Pipeline operator:**
+  The output of command1 is given to command2
+  
+      command1 | command2
+  
+  **Additional links:**
+  [Linux Tutorial - 11. Learn Piping and Redirection](https://ryanstutorials.net/linuxtutorial/piping.php)
+  
+  ## Using sed
+  
+  
+'''
+tags: [
+  "lfcs"
+  "bash"
+  "sysadmin"
+]
+isStarred: false
+isTrashed: false
