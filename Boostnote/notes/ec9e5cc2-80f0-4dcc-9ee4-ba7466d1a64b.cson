@@ -1,0 +1,29 @@
+createdAt: "2018-05-02T08:25:38.382Z"
+updatedAt: "2018-05-02T08:38:31.259Z"
+type: "MARKDOWN_NOTE"
+folder: "1f4ca2e02de793f62302"
+title: "Python PDF search"
+content: '''
+  # Python PDF search
+  
+  ## Add text layer if necessary
+  
+      ocrmypdf --rotate-pages myfile.pdf myfile.pdf
+  
+  ## search in PDF
+  
+      pdfgrep -nHri search_string_hallo ./
+  
+  ## parse output
+      
+      filename:linenumber:excerpt
+    
+    
+'''
+tags: [
+  "python"
+  "pdf"
+  "search"
+]
+isStarred: false
+isTrashed: false

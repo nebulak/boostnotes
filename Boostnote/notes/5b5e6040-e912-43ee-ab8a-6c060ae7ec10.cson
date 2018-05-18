@@ -1,5 +1,5 @@
 createdAt: "2018-04-27T08:27:01.915Z"
-updatedAt: "2018-04-27T09:18:14.985Z"
+updatedAt: "2018-05-07T10:02:47.083Z"
 type: "MARKDOWN_NOTE"
 folder: "011825cbb91c6d9c89ea"
 title: "Bash snippets"
@@ -16,7 +16,11 @@ content: '''
       sed 's/oldstring.*/newstring/' /some/file/some/where.txt
   
   
+  ### Useful libraries
   
+  **Shell script loader:** 
+  [linux - Bash: How _best_ to include other scripts? - Stack Overflow](https://stackoverflow.com/questions/192292/bash-how-best-to-include-other-scripts/3692080#3692080)
+  [Overview | Shell Script Loader](https://loader.sourceforge.io/overview/)
 '''
 tags: [
   "sysadmin"

@@ -1,0 +1,25 @@
+createdAt: "2018-05-16T06:47:29.730Z"
+updatedAt: "2018-05-16T06:51:52.524Z"
+type: "MARKDOWN_NOTE"
+folder: "e471bb6f54c0f12cb405"
+title: "Useful Laravel Links"
+content: '''
+  # Useful Laravel Links
+  
+  ## Security Checks
+  
+  [GitHub - sensiolabs/security-checker: PHP frontend for security.sensiolabs.org](https://github.com/sensiolabs/security-checker)
+  
+  [How to Check for Known Security Vulnerabilities in Your Dependencies (Symfony Docs)](https://symfony.com/doc/current/security/security_checker.html)
+  
+  ## CI & CD
+  
+  [Test and deploy Laravel applications with GitLab CI/CD and Envoy | GitLab](https://docs.gitlab.com/ee/ci/examples/laravel_with_gitlab_and_envoy/)
+  
+  [Laravel Continuous Deployment on VPS over Github](http://tornike.me/notes/laravel-build-and-deployment-on-vps-over-github)
+  
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false

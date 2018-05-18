@@ -1,0 +1,41 @@
+createdAt: "2018-05-02T09:19:05.242Z"
+updatedAt: "2018-05-02T09:19:44.143Z"
+type: "MARKDOWN_NOTE"
+folder: "1f4ca2e02de793f62302"
+title: "Vultrack"
+content: '''
+  # Vultrack
+  
+      import json
+      import urllib.request
+      #from requests import get
+      from zipfile import ZipFile
+      import re
+  
+      CVE_URL = 'https://nvd.nist.gov/feeds/json/cve/1.0/nvdcve-1.0-2018.json.zip'
+  
+      def get_cves():
+          urllib.request.urlretrieve(CVE_URL, "2018.zip")
+          with ZipFile('2018.zip') as myzip:
+              myzip.extractall()
+          cve_json = ""
+          with open('nvdcve-1.0-2018.json', 'r') as myfile:
+              data=myfile.read()
+              print(data)
+  
+      def search(product_name):
+          # search in vendor_name, product_name, description
+          pass
+  
+  
+      get_cves()
+  
+'''
+tags: [
+  "python"
+  "cve"
+  "itsec"
+  "pentest"
+]
+isStarred: false
+isTrashed: false

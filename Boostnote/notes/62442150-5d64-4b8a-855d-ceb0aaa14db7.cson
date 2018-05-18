@@ -1,0 +1,81 @@
+createdAt: "2018-05-18T07:00:33.892Z"
+updatedAt: "2018-05-18T07:22:29.752Z"
+type: "MARKDOWN_NOTE"
+folder: "1f4ca2e02de793f62302"
+title: "Sphinx documentation generator setup"
+content: '''
+  # Sphinx documentation generator setup
+  
+  source: [An idiot’s guide to Python documentation with Sphinx and ReadTheDocs – Samposium](https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/)
+  
+  ## Setup
+  
+      pip install Sphinx
+  
+  **Setup project directory:**
+  
+      cd your-awesome-project
+      mkdir docs
+      cd docs/
+      sphinx-quickstart
+  
+  **Enable the following modules:**
+  
+    * **autodoc** for automatic generation of module documentation
+    * **viewcode** for enabling code links in the documentation
+  
+  **Setup module documentation:**
+  
+      cd docs/
+      sphinx-apidoc -o source/ ../<package>
+      
+  open conf.py and uncomment the following line:
+  
+      # If extensions (or modules to document with autodoc) are in another directory,
+      # add these directories to sys.path here. If the directory is relative to the
+      # documentation root, use os.path.abspath to make it absolute, like shown here.
+      sys.path.insert(0, os.path.abspath('.'))
+  
+  if it does NOT work you may instead use the following alternative in conf.py:
+  
+      sys.path.insert(0, os.path.abspath('../'))
+      
+  Enable Google style python docstrings with napoleon in conf.py:
+  
+      # Add napoleon to the extensions list
+      extensions = ['sphinx.ext.napoleon']
+  
+      # Napoleon settings
+      napoleon_google_docstring = True
+      napoleon_numpy_docstring = False
+      
+  **Add your readme:**
+  to docs/index.rst:
+  
+      [...]
+      .. toctree::
+         :maxdepth: 2
+  
+         readme
+      [...]
+  
+  create docs/readme.rst as a "symlink" with the following content:
+  
+      .. include:: ../README.rst
+      
+  Create your readme.rst file in the root of your project.
+  
+  ## Additional ressources
+  
+  [Google Python Style Guide](http://google.github.io/styleguide/pyguide.html)
+  [Example Google Style Python Docstrings — Sphinx 1.7.3+ documentation](http://www.sphinx-doc.org/en/stable/ext/example_google.html#example-google)
+  [sphinx.ext.napoleon – Support for NumPy and Google style docstrings — Sphinx 1.7.3+ documentation](http://www.sphinx-doc.org/en/stable/ext/napoleon.html#getting-started)
+'''
+tags: [
+  "python"
+  "sphinx"
+  "documentation"
+  "tutorial"
+]
+isStarred: false
+isTrashed: false

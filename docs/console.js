@@ -1,7 +1,5 @@
 // Output Welcome message
-output('Original console design by Matt Cowley https://codepen.io/MattCowley/pen/jqBbdG/')
-output('')
-output('Welcome to Boostnote Web-CLI.')
+output('Welcome to Boostnote Web-CLI.<br/><br/>')
 
 var folders;
 var notes;

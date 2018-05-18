@@ -59,6 +59,16 @@
       "key": "f4e6e478736ca64358d4",
       "color": "#FF8E00",
       "name": "git"
+    },
+    {
+      "key": "c46806acbc0d231e6610",
+      "color": "#3FD941",
+      "name": "FreeSoftware"
+    },
+    {
+      "key": "e471bb6f54c0f12cb405",
+      "color": "#FF8E00",
+      "name": "PHP"
     }
   ],
   "version": "1.0"
