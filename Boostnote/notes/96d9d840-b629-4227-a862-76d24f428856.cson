@@ -1,0 +1,199 @@
+createdAt: "2018-06-11T06:45:50.350Z"
+updatedAt: "2018-06-11T06:46:32.421Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "TB cross platform helpers"
+description: "TB cross platform helpers"
+snippets: [
+  {
+    name: "CommonUtils.js"
+    mode: "JavaScript"
+    content: '''
+      /**
+       *  Module containing helper functions and utilities
+       * @module CommonUtils
+       */
+      var CommonUtils = {
+        /**
+         * Returns the OS as string, e.g. "WINNT" for "Windows", complete list at https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Build_Instructions/OS_TARGET
+         * @function
+         * @memberof module:CommonUtils
+         * @return {string} OS as string
+         */
+        getOS: function () {
+          Logger.debug("CommonUtils.getOS");
+          var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+          var xulRuntime = Cc["@mozilla.org/xre/app-info;1"].getService(Ci.nsIXULRuntime);
+          return xulRuntime.OS;
+        },
+        //TODO: delete ?
+        checkPassword: function (email, password) {
+          Application.console.log("CommonUtils.checkPassword");
+          var accMgr = Components.classes["@mozilla.org/messenger/account-manager;1"]
+                                  .getService(Components.interfaces.nsIMsgAccountManager);
+          var accounts = accMgr.accounts;
+          Application.console.log("checkPassword: got accounts");
+          if (accounts.queryElementAt) {
+            // Gecko 17+
+            for (var i = 0; i < accounts.length; i++) {
+              var account = accounts.queryElementAt(i, Components.interfaces.nsIMsgAccount);
+              Application.console.log("checkPassword: got specific account");
+              // Get identities from account
+              for (var j= 0; j < account.identities.length; j++) {
+                var identity = account.identities.queryElementAt(j, Components.interfaces.nsIMsgIdentity);
+                Application.console.log("checkPassword: got identities");
+                //emailAddresses.push(identity.email);
+                Application.console.log("idEmail: " + identity.email + ", input-email: " + email);
+                if(identity.email === email) {
+                  Application.console.log("checkPassword: found identity for email-address");
+                  //source: https://dxr.mozilla.org/comm-central/source/mail/components/accountcreation/content/verifyConfig.js#60
+                  //var server = identity.incomingServer;
+                  var server = account.incomingServer;
+      
+                  //source: line 134: https://searchcode.com/codesearch/view/21376879/
+                  Application.console.log("hostname: " + account.incomingServer.hostName);
+                  let count = {};
+                  let loginMgr = Cc["@mozilla.org/login-manager;1"].getService(Ci.nsILoginManager);
+                  let logins = loginMgr.findLogins(count, "imap://" + account.incomingServer.hostName, null,
+                                         "imap://" + account.incomingServer.hostName);
+                  var serverPassword = logins[0].password;
+                  //TODO: delete!
+                  Application.console.log("Server Password: " + serverPassword);
+                  if(serverPassword === "") {
+                    //TODO: check password against server
+                  }
+                  if(serverPassword === password)
+                  {
+                    return true;
+                  }
+                }
+              }
+            }
+            return false;
+          }
+          var logins = Services.logins.findLogins({}, url, null, url);
+      
+        },
+        /**
+         * Returns the path for the GnuPG executable
+         * @function
+         * @memberof module:CommonUtils
+         * @return {string} GnuPG path as string
+         */
+        getGPGPath: function (callback) {
+          Logger.debug("CommonUtils.getGPGPath");
+          //TODO: check for different linux paths
+          var gpgPath = '/usr/bin/gpg2';
+          if(CommonUtils.getOS() == "WINNT")
+          {
+            CommonUtils.getWinGpgPath(function(returnedPath) {
+              callback(returnedPath);
+            });
+          }
+          else {
+            callback(gpgPath);
+          }
+        },
+        /**
+         * Returns the path of the GnuPG executable on windows machines
+         * @function
+         * @memberof module:CommonUtils
+         * @param {function} callback callback function which is called with the returned string
+         * @return {string} path to GnuPG executable
+         */
+        getWinGpgPath: function (callback) {
+          //TODO: should be private
+          Logger.debug("CommonUtils.getWinGPGPath");
+          var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+          var Application = Cc["@mozilla.org/steel/application;1"]
+                          .getService(Ci.steelIApplication);
+          var subProcStdOut = "";
+          Application.console.log("Z356: Entered getWinGpgPath");
+          var subProcCommand = this.chrome2FilePath("chrome://vvv-addon/content/native/win/WinGetEnv.exe");
+          Application.console.log("FilePath: " + subProcCommand);
+          var subProcArgs = [];
+          var subProcOptions = {
+            command: subProcCommand,
+            arguments: subProcArgs,
+            stdout: function(data) {
+              subProcStdOut += data;
+            },
+            done: function(result) {
+              //TODO: delete ...
+              Application.console.log("StdOut: " + subProcStdOut);
+              subProcStdOut = subProcStdOut.toLowerCase();
+              var PATHArray = subProcStdOut.split(";");
+      
+              for(var i = 0; i < PATHArray.length; i++) {
+                if(PATHArray[i].indexOf("gnupg") !== -1) {
+                  //Application.console.log("GPG Path: " + PATHArray[i]);
+                  var gpgPath = PATHArray[i] + "\\\\gpg.exe";
+                  Application.console.log("Callback: " + gpgPath);
+                  callback(gpgPath);
+                }
+              }
+              //TODO: no GPG found
+              //callback("Z672: No GPGPath");
+            }
+          };
+          subprocess.call(subProcOptions).wait();
+        },
+        /**
+         * Returns a file path for a given chrome path e.g. chrome://vvv-addon/content/native/WinGetEnv.exe
+         * @function
+         * @memberof module:CommonUtils
+         * @param {string} chromePath chrome path to the file
+         * @return {string} file path for the given chrome path
+         */
+        chrome2FilePath: function (chromePath) {
+          Logger.debug("CommonUtils.chrome2FilePath");
+          Components.utils.import("resource://gre/modules/Services.jsm");
+          var cr = Components.classes['@mozilla.org/chrome/chrome-registry;1'].getService(Components.interfaces.nsIChromeRegistry);
+          var chromeURI = Services.io.newURI(chromePath, 'UTF-8', null);
+          var localFile = cr.convertChromeURL(chromeURI); //TODO: delete example comments
+          var filePath = localFile.path; // "file:///C:/Users/Vayeate/AppData/Roaming/Mozilla/Firefox/Profiles/aecgxse.Unnamed%20Profile%201/extensions/youraddon@jetpack.xpi!/mySubFolder/myCFunctionsForUnix.so"
+          var returnPath = filePath;//TODO: //filePath.substring(8);
+          if(CommonUtils.getOS() !== "WINNT") {
+            return returnPath;
+          }
+          if(returnPath[0] === '/')
+          {
+            returnPath = filePath.substring(1);
+            returnPath = returnPath.replace(/\\//g, "\\\\");
+          }
+          return returnPath;
+        },
+        hexToByte: function(str) {
+          //TODO:
+          /*
+          if (!str) {
+            return new Uint8Array();
+          }
+      */
+          var a = [];
+          for (var i = 0, len = str.length; i < len; i+=2) {
+            a.push(parseInt(str.substr(i,2),16));
+          }
+      
+          return new Uint8Array(a);
+        },
+        byteArrayToB64: function(byteArray) {
+          return btoa(String.fromCharCode.apply(null, byteArray));
+        },
+        hexToBase64: function(hexstring) {
+          var b64 = btoa(String.fromCharCode.apply(null,
+                      hexstring.replace(/\\r|\\n/g, "").replace(/([\\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" "))
+                    );
+          Application.console.log("Base64: " + b64);
+          return b64;
+        }
+      };
+    '''
+  }
+]
+tags: [
+  "tb"
+  "js"
+]
+isStarred: false
+isTrashed: false

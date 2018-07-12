@@ -1,0 +1,27 @@
+createdAt: "2018-06-11T06:47:18.757Z"
+updatedAt: "2018-06-11T06:47:53.139Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "Fake LocalStorage for OpenPGP.js"
+description: "Fake LocalStorage for OpenPGP.js"
+snippets: [
+  {
+    name: "fakeLocalStorage.js"
+    mode: "JavaScript"
+    content: '''
+      var fakeLocalStorage = {
+        _data       : {},
+        setItem     : function(id, val) { return this._data[id] = String(val); },
+        getItem     : function(id) { return this._data.hasOwnProperty(id) ? this._data[id] : null; },
+        removeItem  : function(id) { return delete this._data[id]; },
+        clear       : function() { return this._data = {}; }
+      };
+    '''
+  }
+]
+tags: [
+  "tb"
+  "js"
+]
+isStarred: false
+isTrashed: false

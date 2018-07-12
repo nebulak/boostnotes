@@ -1,0 +1,44 @@
+createdAt: "2018-06-06T07:45:30.399Z"
+updatedAt: "2018-06-06T07:54:35.244Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "send email in thunderbird"
+description: "send email in thunderbird"
+snippets: [
+  {
+    name: "send-mail.js"
+    mode: "JavaScript"
+    content: '''
+      function sendEmail(from, to, subject, body) {
+        //source: [Automatic message sending - Extensions | MDN](https://developer.mozilla.org/en-US/docs/Extensions/Thunderbird/HowTos/Automatic_message_sending)
+        // Set the data of the message
+        let compFields = Components.classes["@mozilla.org/messengercompose/composefields;1"].createInstance(Components.interfaces.nsIMsgCompFields);
+        compFields.from = from;
+        compFields.to = to;
+        compFields.subject = subject;
+        compFields.body = body + "\\r\\n";
+        let msgComposeParams = Components.classes["@mozilla.org/messengercompose/composeparams;1"].createInstance(Components.interfaces.nsIMsgComposeParams);
+        msgComposeParams.composeFields = compFields;
+      
+        let gMsgCompose = Components.classes["@mozilla.org/messengercompose/compose;1"].createInstance(Components.interfaces.nsIMsgCompose);
+        let msgSend = Components.classes["@mozilla.org/messengercompose/send;1"].createInstance(Components.interfaces.nsIMsgSend);
+        Components.utils.import("resource:///modules/mailServices.js");
+        let am = MailServices.accounts;
+        gMsgCompose.initialize(msgComposeParams);
+        gMsgCompose.SendMsg(msgSend.nsMsgDeliverNow,
+                            am.defaultAccount.defaultIdentity, // identity
+                            am.defaultAccount, // account
+                            null, // message window
+                            null); // nsIMsgProgress
+      }
+      
+    '''
+  }
+]
+tags: [
+  "TB"
+  "JS"
+  "email"
+]
+isStarred: false
+isTrashed: false

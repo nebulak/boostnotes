@@ -1,5 +1,5 @@
 createdAt: "2018-04-27T08:27:01.915Z"
-updatedAt: "2018-05-07T10:02:47.083Z"
+updatedAt: "2018-07-12T07:18:26.591Z"
 type: "MARKDOWN_NOTE"
 folder: "011825cbb91c6d9c89ea"
 title: "Bash snippets"
@@ -21,6 +21,66 @@ content: '''
   **Shell script loader:** 
   [linux - Bash: How _best_ to include other scripts? - Stack Overflow](https://stackoverflow.com/questions/192292/bash-how-best-to-include-other-scripts/3692080#3692080)
   [Overview | Shell Script Loader](https://loader.sourceforge.io/overview/)
+  
+  ### Adding a script to systemd
+  
+  [Ein Python-Script mit Systemd als Daemon (Systemd tut garnicht weh… :-) ) | Thomas Christlieb](https://www.thomaschristlieb.de/ein-python-script-mit-systemd-als-daemon-systemd-tut-garnicht-weh/)
+  
+  **/etc/pyserver/pyserver.py**
+  
+      #!/usr/bin/python3 -u
+      import socket
+  
+      TCP_IP = '127.0.0.1'
+      TCP_PORT = 5005
+      BUFFER_SIZE = 20  # Normally 1024, but we want fast response
+  
+      while 1:
+         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+         s.bind((TCP_IP, TCP_PORT))
+         s.listen(1)
+  
+         conn, addr = s.accept()
+         print('Connection address:', addr)
+         while 1:
+            data = conn.recv(BUFFER_SIZE)
+            if not data: break
+            print("received data:", data)
+            conn.send(data)  # echo
+         conn.close()
+  
+  **make it executable and add an user:**
+  
+      chmod +x /etc/pyserver/pyserver.py
+      useradd -r -s /bin/false pyserveruser
+      chown -R pyserveruser:pyserveruser /etc/pyserver
+      
+  **creating a unit file: /etc/systemd/system/pyserver.service**
+  
+      [Unit]
+      Description=My Python Server
+      After=syslog.target
+  
+      [Service]
+      Type=simple
+      User=pyserveruser
+      Group=pyserveruser
+      WorkingDirectory=/etc/pyserver
+      ExecStart=/etc/pyserver/pyserver.py
+      SyslogIdentifier=pyserver
+      StandardOutput=syslog
+      StandardError=syslog
+      Restart=always
+      RestartSec=3
+  
+      [Install]
+      WantedBy=multi-user.target
+  
+  **enable & start the service:**
+  
+      systemctl enable pyserver
+      systemctl start pyserver
+      
 '''
 tags: [
   "sysadmin"

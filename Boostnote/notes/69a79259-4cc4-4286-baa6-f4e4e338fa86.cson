@@ -1,0 +1,21 @@
+createdAt: "2018-06-04T07:34:28.295Z"
+updatedAt: "2018-06-04T07:35:39.415Z"
+type: "MARKDOWN_NOTE"
+folder: "c4380fcf0c6d16868e29"
+title: "Useful JS-UI Snippets"
+content: '''
+  # Useful JS-UI Snippets
+  
+  ## Forms
+  
+  [css - Twitter Bootstrap Form File Element Upload Button - Stack Overflow](https://stackoverflow.com/a/41405885/7486276)
+  
+  
+'''
+tags: [
+  "js"
+  "bootstrap"
+  "ui"
+]
+isStarred: false
+isTrashed: false

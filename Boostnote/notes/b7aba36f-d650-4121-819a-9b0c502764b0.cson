@@ -1,0 +1,147 @@
+createdAt: "2018-06-11T06:41:16.015Z"
+updatedAt: "2018-06-11T06:44:42.296Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "interface gnupg from thunderbird"
+description: "interface gnupg from thunderbird"
+snippets: [
+  {
+    name: "gpg.js"
+    mode: "JavaScript"
+    content: '''
+      /**
+       *  Module containing functions for IPC with GnuPG
+       * @module GPGIPC
+       */
+      var GPGIPC = {
+        /**
+         * Fetchs the Public Keyring from GnuPG as armored string
+         * @function
+         * @memberof module:GPGIPC
+         * @param {function} callback callback function which is called with the public keyring
+         * @return {string} Armored public keyring as string
+         */
+        getPubRingArmored: function(callback) {
+          Logger.debug("GPGIPC.getPubRingArmored");
+          var { classes: Cc, interfaces: Ci, utils: Cu } = Components;
+          Cu.import("chrome://vvv-addon/content/ui/js/subprocess.jsm");
+      
+          CommonUtils.getGPGPath(function (gpgPath) {
+            var subProcStdOut = "";
+            var subProcCommand = gpgPath;
+            var subProcArgs = ['--export', '--armor'];
+            var subProcOptions = {
+              command: subProcCommand,
+              arguments: subProcArgs,
+              stdout: function(data) {
+                subProcStdOut += data;
+              },
+              done: function(result) {
+                callback(subProcStdOut);
+              }
+            };
+            subprocess.call(subProcOptions).wait();
+          });
+        },
+        _gpgExportArmored: function (gpgPath, callback) {
+          //TODO: ...
+        },
+        /**
+         * Imports an armored public pgp-key to GnuPG
+         * @function
+         * @memberof module:GPGIPC
+         * @param {string} sKey - Armored public pgp-key to import
+         * @param {function} callback callback function, which is called after the import finished
+         */
+        importKey: function (sKey, callback) {
+          Logger.debug("GPGIPC.importKey");
+          //TODO: create temporary file and copy gpgKey to it
+          Components.utils.import("resource://gre/modules/osfile.jsm");
+          //TODO:
+          //get path for temporary file
+          var filePath = OS.Path.join(OS.Constants.Path.profileDir, "tmp_gpg_key.txt");
+          var tmpFile = OS.Path.join(OS.Constants.Path.profileDir, "tmp_buffer.txt");
+      
+          var encoder = new TextEncoder();
+          var txtArray = encoder.encode(sKey);
+          var promise = OS.File.writeAtomic(filePath, txtArray, {tmpPath: tmpFile});
+      
+          //TODO: try-catch
+          promise.then(
+            function() {
+              CommonUtils.getGPGPath(function (gpgPath) {
+                var subProcStdOut = "";
+                var subProcCommand = gpgPath;
+                var subProcArgs = ['--import', filePath];
+                var subProcOptions = {
+                  command: subProcCommand,
+                  arguments: subProcArgs,
+                  stdout: function(data) {
+                    subProcStdOut += data;
+                  },
+                  done: function(result) {
+                    Logger.trace("GPGIPC.importKey: GPG returned: " + subProcStdOut);
+                    var removeFilePromise = OS.File.remove(filePath, {ignoreAbsent: true});
+                    removeFilePromise.then(function () {
+                      Logger.trace("GPGIPC.importKey: remove temp file was successful");
+                      callback(subProcStdOut);
+                    },
+                    function() {
+                      Logger.warn("GPGIPC.importKey: remove temp file failed");
+                      //TODO:
+                    }
+                  );
+      
+                  }
+                };
+                subprocess.call(subProcOptions).wait();
+              });
+            },
+            function(aRejectReason) {
+              //TODO: throw exception
+              Logger.warn("GPGIPC.importKey: creation of temp file failed with the following reason: " + aRejectReason);
+            }
+          );
+        },
+        /**
+         * Deletes an armored public pgp-key from GnuPG keystore
+         * @function
+         * @memberof module:GPGIPC
+         * @param {string} keyIdentifier - KeyIdentifier of the key e.g. "Hans Mustermann <hans.mustermann@mustermann.de>"
+         * @param {function} callback callback function, which is called after the deletion
+         */
+        deleteKey: function (keyIdentifier, callback) {
+          CommonUtils.getGPGPath(function (gpgPath) {
+            var subProcStdOut = "";
+            var subProcCommand = gpgPath;
+            var subProcArgs = ['--batch', '--yes', '--delete-key', keyIdentifier];
+            var subProcOptions = {
+              command: subProcCommand,
+              arguments: subProcArgs,
+              stdout: function(data) {
+                subProcStdOut += data;
+              },
+              done: function(result) {
+                callback(subProcStdOut);
+              }
+            };
+            subprocess.call(subProcOptions).wait();
+          });
+        },
+        getSecRingArmored: function (callback) {
+      
+        }
+      };
+      
+    '''
+  }
+]
+tags: [
+  "TB"
+  "JS"
+  "email"
+  "gpg"
+  "openpgp"
+]
+isStarred: false
+isTrashed: false

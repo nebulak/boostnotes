@@ -69,6 +69,11 @@
       "key": "e471bb6f54c0f12cb405",
       "color": "#FF8E00",
       "name": "PHP"
+    },
+    {
+      "key": "c4380fcf0c6d16868e29",
+      "color": "#FF8E00",
+      "name": "JS"
     }
   ],
   "version": "1.0"
