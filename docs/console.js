@@ -75,6 +75,42 @@ cd.usage = "echo arg [arg ...]"
 cd.doc = "Echos to output whatever arguments are input"
 
 
+function search (token) {
+  var found_notes = [];
+  for(var i=0; i<notes.length; i++)
+  {
+    var sNotes = "";
+    //check if we want to search for a tag
+    if(token[0] == '#')
+    {
+      for (var j = 0; j < notes.length; j++)
+      {
+        if(notes[i].tags[j] == token)
+        {
+          sNotes += "[" + i + "] " + notes[i].title + "<br/>";
+        }
+      }
+    }
+    else
+    {
+      if( ((notes[i].content).indexOf(token) !== -1) || ((notes[i].title).indexOf(token) !== -1))
+      {
+        sNotes += "[" + i + "] " + notes[i].title + "<br/>";
+      }
+    }
+    return sNotes;
+
+  }
+
+  if(sNotes == "")
+  {
+    return "<br/> No note found for search <br/>";
+  }
+}
+search.usage = "search searchtoken"
+search.doc = "search for notes containing token or tag"
+
+
 function vw (num) {
 
   if(num < 0 && num >= notes.length)
