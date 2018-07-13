@@ -1,0 +1,22 @@
+createdAt: "2018-07-13T07:46:09.566Z"
+updatedAt: "2018-07-13T07:46:58.936Z"
+type: "MARKDOWN_NOTE"
+folder: "db0fff7e103d59d75d59"
+title: "Golang tutorials"
+content: '''
+  # Golang tutorials
+  
+  ## Setup Environment
+  
+  [How to Install Go 1.10 on Debian 9/8/7 - TecAdmin](https://tecadmin.net/install-go-on-debian/)
+  
+  ## Install dep
+  
+  
+'''
+tags: [
+  "golang"
+  "tutorial"
+]
+isStarred: false
+isTrashed: false

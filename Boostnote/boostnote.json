@@ -74,6 +74,11 @@
       "key": "c4380fcf0c6d16868e29",
       "color": "#FF8E00",
       "name": "JS"
+    },
+    {
+      "key": "db0fff7e103d59d75d59",
+      "color": "#2BA5F7",
+      "name": "golang"
     }
   ],
   "version": "1.0"
