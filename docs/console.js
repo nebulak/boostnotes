@@ -85,9 +85,13 @@ function search (token) {
     {
       for (var j = 0; j < notes.length; j++)
       {
-        if(notes[i].tags[j] == token)
-        {
-          sNotes += "[" + i + "] " + notes[i].title + "<br/>";
+        try {
+          if(notes[i].tags[j] == token)
+          {
+            sNotes += "[" + i + "] " + notes[i].title + "<br/>";
+          }
+        } catch (e) {
+
         }
       }
     }
