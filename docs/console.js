@@ -78,10 +78,16 @@ cd.doc = "Echos to output whatever arguments are input"
 function search (token) {
   var found_notes = [];
   var sNotes = "";
+  var isTokenSearch = false;
+  if(token[0] == '#') {
+    isTokenSearch = true;
+    token = token.substring(1, token.length);
+  }
+
   for(var i=0; i<notes.length; i++)
   {
     //check if we want to search for a tag
-    if(token[0] == '#')
+    if(isTokenSearch)
     {
       for (var j = 0; j < notes.length; j++)
       {
