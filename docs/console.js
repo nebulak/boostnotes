@@ -131,6 +131,7 @@ var cmds = {
   cd,
   ls,
   clear,
+  search,
   help
 }
 
