@@ -93,10 +93,15 @@ function search (token) {
     }
     else
     {
-      if( ((notes[i].content).indexOf(token) !== -1) || ((notes[i].title).indexOf(token) !== -1))
-      {
-        sNotes += "[" + i + "] " + notes[i].title + "<br/>";
+      try {
+        if( ((notes[i].content).indexOf(token) !== -1) || ((notes[i].title).indexOf(token) !== -1))
+        {
+          sNotes += "[" + i + "] " + notes[i].title + "<br/>";
+        }
+      } catch (e) {
+
       }
+
     }
   }
 
