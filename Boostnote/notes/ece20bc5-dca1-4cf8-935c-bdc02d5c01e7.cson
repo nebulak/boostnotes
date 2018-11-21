@@ -1,0 +1,57 @@
+createdAt: "2018-09-03T09:27:48.693Z"
+updatedAt: "2018-09-03T09:29:21.049Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "thunderbird DER-cert to PEM-cert converting"
+description: "thunderbird DER-cert to PEM-cert converting"
+snippets: [
+  {
+    name: "cert_to_pem.js"
+    mode: "JavaScript"
+    content: '''
+      // source: [Certificate PEM extractor · GitHub](https://gist.github.com/Manishearth/6f280af989c95a91adfd)
+      // http://mxr.mozilla.org/mozilla-central/source/security/manager/pki/resources/content/pippki.js
+      function getDERString(cert)
+      {
+        var length = {};
+        var derArray = cert.getRawDER(length);
+        var derString = '';
+        for (var i = 0; i < derArray.length; i++) {
+          derString += String.fromCharCode(derArray[i]);
+        }
+        return derString;
+      }
+      
+      // http://mxr.mozilla.org/mozilla-central/source/security/manager/pki/resources/content/pippki.js
+      function getPEMString(cert)
+      {
+        var derb64 = btoa(getDERString(cert));
+        // Wrap the Base64 string into lines of 64 characters, 
+        // with CRLF line breaks (as specified in RFC 1421).
+        var wrapped = derb64.replace(/(\\S{64}(?!$))/g, "$1\\r\\n");
+        return "-----BEGIN CERTIFICATE-----\\r\\n"
+               + wrapped
+               + "\\r\\n-----END CERTIFICATE-----\\r\\n";
+      }
+      
+      let certcache = Components.classes["@mozilla.org/security/nsscertcache;1"].createInstance(Ci.nsINSSCertCache);
+      certcache.cacheAllCerts();
+      let enumerator = certcache.getX509CachedCerts().getEnumerator();
+      let certlist = [];
+      let certstring="";
+      while(enumerator.hasMoreElements()){
+        let cert = enumerator.getNext().QueryInterface(Ci.nsIX509Cert);
+        let pem = getPEMString(cert);
+        certlist.push({name: cert.commonName, pem: pem});
+        certstring+=pem+"\\n";
+      }
+    '''
+  }
+]
+tags: [
+  "tb"
+  "JS"
+  "SMIME"
+]
+isStarred: false
+isTrashed: false

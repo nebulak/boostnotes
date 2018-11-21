@@ -1,0 +1,84 @@
+createdAt: "2018-11-21T13:47:17.697Z"
+updatedAt: "2018-11-21T13:56:08.418Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "Add Preferences to Thunderbird Addon"
+description: "Add Preferences to Thunderbird Addon"
+snippets: [
+  {
+    name: "install.rdf"
+    mode: "text"
+    content: '''
+      <?xml version="1.0"?>
+      
+      <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+           xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+      
+        <Description about="urn:mozilla:install-manifest">
+          <em:id>test@test.de</em:id>
+          <em:type>2</em:type>
+          <em:name>test Addon</em:name>
+          <em:version>1.0</em:version>
+          <em:creator>test creator</em:creator>
+          <em:iconURL>chrome://test/skin/icon.svg</em:iconURL>
+          <em:description>test Addon for thunderbird.</em:description>
+          <em:homepageURL>https://www.test.de</em:homepageURL>
+          <em:optionsURL>chrome://test/content/preferences.xul</em:optionsURL>
+      
+          <em:targetApplication>
+            <Description>
+              <em:id>{3550f703-e582-4d05-9a08-45323412341243}</em:id>
+              <em:minVersion>22.*</em:minVersion>
+              <em:maxVersion>60.*</em:maxVersion>
+            </Description>
+          </em:targetApplication>
+      
+        </Description>
+      </RDF>
+    '''
+  }
+  {
+    name: "preferences.xul"
+    mode: "Plain Text"
+    content: '''
+      <!DOCTYPE window SYSTEM "chrome://test/locale/test.dtd">
+      <?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+      	<prefwindow id="test-options-win"
+      		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      		persist="screenX screenY" title="Your Addon Settings" >
+      					<prefpane id="test-options" label="Your Options" style="max-height:400px;" flex="1"><vbox flex="1" style="overflow:auto;"><groupbox>
+      						<caption label="Einstellungen" />
+      						<preferences>
+      							<preference id="extension.test.options-testvalueone" name="extension.crisp.options-testvalueone"
+      								type="string"/>
+      							<preference id="extension.test.testvaluetwo" name="extension.test.testvaluetwo"
+      								type="string"/>
+      						</preferences>
+      						<grid>
+      							<columns>
+      								<column style="width: 150px;" />
+      								<column style="width: 250px;" />
+      							</columns>
+      							<rows>
+      								<row>
+      									<label control="options-testvalueone" value="Your first test value:" />
+      									<textbox preference="extension.test.options-testvalueone" />
+      								</row>
+      								<row>
+      									<label control="options-testvaluetwo" value="Your second test value:" />
+      									<textbox preference="extension.test.options-testvaluetwo" />
+      								</row>
+      							</rows>
+      						</grid>
+      					</groupbox></vbox></prefpane>
+      
+      	</prefwindow>
+    '''
+  }
+]
+tags: [
+  "tb"
+  "js"
+]
+isStarred: false
+isTrashed: false

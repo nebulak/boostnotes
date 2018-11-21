@@ -1,0 +1,32 @@
+createdAt: "2018-11-20T11:17:28.189Z"
+updatedAt: "2018-11-20T11:25:04.565Z"
+type: "SNIPPET_NOTE"
+folder: "c4380fcf0c6d16868e29"
+title: "Map Promise functions in loop"
+description: "Map Promise functions in loop"
+snippets: [
+  {
+    name: "promise_loop.js"
+    mode: "JavaScript"
+    content: '''
+      var list = ["abc", "def"];
+      
+      list = list.map(function(inputString) {
+        //do something that takes long and returns a promise
+        var result = doSomething(inputString);
+        return Promise.resolve(result);
+      });
+      
+      return Promise.all(list).then(function(results) {
+        for (var i=0; i < results.length(); i++) {
+          return Promise.resolve(results[i]);
+        }
+      })
+    '''
+  }
+]
+tags: [
+  "js"
+]
+isStarred: false
+isTrashed: false

@@ -1,0 +1,41 @@
+createdAt: "2018-07-31T14:14:05.947Z"
+updatedAt: "2018-07-31T14:14:49.806Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "Automate thunderbird addon build with ant"
+description: "Automate thunderbird addon build with ant"
+snippets: [
+  {
+    name: "build.xml"
+    mode: "XML"
+    content: '''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <project name="Addon" default="build" basedir=".">
+      
+      	<property name="pluging.filename" value="TB-Addon.xpi" />
+      
+      	<target name="build">
+      		<!-- delete existing addon file -->
+      		<delete file="${pluging.filename}" verbose="true" />
+      
+      		<!-- create addon file -->
+      		<zip destfile="${pluging.filename}" encoding="UTF-8">
+      			<zipfileset dir="src" includes="chrome.manifest,install.rdf" prefix="" />
+      			<zipfileset dir="src/chrome" includes="**/*" prefix="chrome/" />
+      		</zip>
+      	</target>
+      
+      
+      </project>
+      
+    '''
+  }
+]
+tags: [
+  "ant"
+  "tb"
+  "xml"
+  "build"
+]
+isStarred: false
+isTrashed: false

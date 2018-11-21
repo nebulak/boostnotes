@@ -1,0 +1,60 @@
+createdAt: "2018-11-21T13:56:14.155Z"
+updatedAt: "2018-11-21T13:57:55.847Z"
+type: "SNIPPET_NOTE"
+folder: "ce1d232699b99dfbebfb"
+title: "Access thunderbird preferences from javascript"
+description: "Access thunderbird preferences from javascript"
+snippets: [
+  {
+    name: "preferences.js"
+    mode: "JavaScript"
+    content: '''
+      if (!org) var org = {};
+      if (!org.test) org.test = {};
+      
+      if (!org.test.prefs) org.test.prefs = new function() {
+        var pub = {};
+      
+        pub.prefBranch = "extensions.test.";
+        pub.prefs = Components.classes["@mozilla.org/preferences-service;1"]
+                        .getService(Components.interfaces.nsIPrefBranch);
+      
+        pub.torBirdyPref = Components.classes["@mozilla.org/preferences-service;1"]
+                               .getService(Components.interfaces.nsIPrefService).getBranch(pub.customBranch);
+      
+        pub.setPreferences = function(preference, value) {
+         // Set the preferences for Thunderbird
+         if (typeof value === "string") {
+           pub.prefs.setCharPref(preference, value);
+         }
+         if (typeof value === "boolean") {
+           pub.prefs.setBoolPref(preference, value);
+         }
+         if (typeof value === "number") {
+           pub.prefs.setIntPref(preference, value);
+         }
+        };
+      
+        pub.getPreferences = function(preference, value) {
+         // Set the preferences for Thunderbird
+         if (typeof value === "string") {
+           pub.prefs.setCharPref(preference, value);
+         }
+         if (typeof value === "boolean") {
+           pub.prefs.setBoolPref(preference, value);
+         }
+         if (typeof value === "number") {
+           pub.prefs.setIntPref(preference, value);
+         }
+        };
+      };
+      
+    '''
+  }
+]
+tags: [
+  "tb"
+  "js"
+]
+isStarred: false
+isTrashed: false
